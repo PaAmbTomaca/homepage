@@ -72,7 +72,7 @@ img { max-width: 100%; }
 
 /* ---------- selector de idioma ---------- */
 .lang {
-  position: fixed; z-index: 40;
+  position: absolute; z-index: 40;
   top: calc(12px + env(safe-area-inset-top));
   right: max(16px, env(safe-area-inset-right));
   display: flex; border: 1px solid var(--line); background: rgba(10, 12, 16, .9);
@@ -257,6 +257,7 @@ img { max-width: 100%; }
     padding-bottom: calc(96px + env(safe-area-inset-bottom));
   }
   /* --aside-top lo calcula el JS: si el aside no cabe en pantalla, se pega por abajo */
+  .lang { position: fixed; }
   .aside { position: sticky; top: var(--aside-top, calc(72px + env(safe-area-inset-top))); }
   .tree { display: block; }
   .main { gap: 104px; }
@@ -310,6 +311,7 @@ img { max-width: 100%; }
   <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1z"/></symbol>
   <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1.5"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></symbol>
   <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3M18 5l2 2"/></symbol>
 </svg>
 
@@ -332,9 +334,8 @@ img { max-width: 100%; }
 
     <ul class="contact" data-es-aria="Contacto" data-en-aria="Contact" aria-label="Contacto">
       <li><a href="mailto:laboral@pcuevas.eu"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>laboral@pcuevas.eu</a></li>
-      <li><a href="tel:+34624522847"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+34 624 522 847</a></li>
-      <li><a href="https://www.linkedin.com/in/pau-cuevas/" rel="me noopener"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>in/pau-cuevas</a></li>
       <li><a href="https://media.thefocustracking.com/Pau_Cuevas_0xB7691A467DDD8F7C_public.asc"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><span data-es="Clave PGP pública" data-en="Public PGP key">Clave PGP pública</span></a></li>
+      <li><a href="tel:+34624522847"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+34 624 522 847</a></li>
     </ul>
 
     <nav class="tree" data-es-aria="Índice" data-en-aria="Index" aria-label="Índice">
@@ -352,28 +353,16 @@ img { max-width: 100%; }
 
     <p class="label" data-es="Enlaces" data-en="Links">Enlaces</p>
     <ul class="tiles">
+      <li><a class="tile" href="https://github.com/PaAmbTomaca" rel="me noopener">
+        <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>
+        <span class="tile__name">GitHub</span>
+        <span class="tile__desc">@PaAmbTomaca</span>
+        <span class="tile__go" aria-hidden="true">→</span>
+      </a></li>
       <li><a class="tile" href="https://www.linkedin.com/in/pau-cuevas/" rel="me noopener">
         <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
         <span class="tile__name">LinkedIn</span>
         <span class="tile__desc" data-es="perfil" data-en="profile">perfil</span>
-        <span class="tile__go" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="tile" href="https://media.thefocustracking.com/Pau_Cuevas_0xB7691A467DDD8F7C_public.asc">
-        <svg class="icon" aria-hidden="true"><use href="#i-key"/></svg>
-        <span class="tile__name" data-es="Clave PGP" data-en="PGP key">Clave PGP</span>
-        <span class="tile__desc">0xB7691A46</span>
-        <span class="tile__go" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="tile" href="mailto:laboral@pcuevas.eu">
-        <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
-        <span class="tile__name" data-es="Escríbeme" data-en="Email me">Escríbeme</span>
-        <span class="tile__desc">laboral@pcuevas.eu</span>
-        <span class="tile__go" aria-hidden="true">→</span>
-      </a></li>
-      <li><a class="tile" href="tel:+34624522847">
-        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
-        <span class="tile__name" data-es="Llámame" data-en="Call me">Llámame</span>
-        <span class="tile__desc">+34 624 522 847</span>
         <span class="tile__go" aria-hidden="true">→</span>
       </a></li>
     </ul>
@@ -510,7 +499,7 @@ img { max-width: 100%; }
 
     <footer class="foot">
       <p>© 2026 Pau Cuevas García<span class="foot__sep">·</span><a href="mailto:laboral@pcuevas.eu">laboral@pcuevas.eu</a></p>
-      <p><span data-es="hecho a mano, sin frameworks" data-en="handcrafted, no frameworks">hecho a mano, sin frameworks</span><span class="foot__sep">·</span><span data-es="hospedado en Europa" data-en="hosted in Europe">hospedado en Europa</span></p>
+      <p data-es="hecho a mano, sin frameworks" data-en="handcrafted, no frameworks">hecho a mano, sin frameworks</p>
     </footer>
 
   </main>
